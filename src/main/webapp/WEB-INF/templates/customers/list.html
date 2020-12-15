@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Customers</title>
+</head>
+<body>
+There are <span th:text="${customers.size()}"></span> customer(s).
+<table>
+    <caption>Customers List</caption>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+    </tr>
+    <tbody>
+    <tr th:each="c : ${customers}">
+        <td th:text="${c.id}"></td>
+        <td>
+            <a th:href="@{/customers/{id}(id=${c.id})}" th:text="${c.name}"></a>
+        </td>
+        <td th:text="${c.email}"></td>
+        <td th:text="${c.address}"></td>
+    </tr>
+    </tbody>
+    </thead>
+</table>
+</body>
+</html>
